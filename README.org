@@ -1,0 +1,49 @@
+#+OPTIONS: ^:nil tags:nil num:nil
+
+* About
+
+Configure and extends [[https://github.com/atykhonov/google-translate][google-translate]].
+
+* Table of Contents                                       :TOC_2_gh:QUOTE:
+#+BEGIN_QUOTE
+- [[#about][About]]
+- [[#requirements][Requirements]]
+- [[#installation][Installation]]
+  - [[#with-use-package-and-straightel][With use-package and straight.el]]
+  - [[#manual-installation][Manual installation]]
+#+END_QUOTE
+
+* Requirements
+
+| Name               | Version |
+|--------------------+---------|
+| Emacs              |    25.1 |
+| ~google-translate~ |  0.12.0 |
+
+
+* Installation
+
+** With use-package and straight.el
+#+begin_src elisp :eval no
+(use-package km-google-translate
+  :straight (km-google-translate
+             :repo "KarimAziev/km-google-translate"
+             :type git
+             :host github)
+  :commands (km-google-translate))
+#+end_src
+
+** Manual installation
+
+Download the source code and put it wherever you like, e.g. into =~/.emacs.d/km-google-translate/=
+
+#+begin_src shell :eval no
+git clone https://github.com/KarimAziev/km-google-translate.git ~/.emacs.d/km-google-translate/
+#+end_src
+
+Add the downloaded directory to the load path:
+
+#+begin_src elisp :eval no
+(add-to-list 'load-path "~/.emacs.d/km-google-translate/")
+(require 'km-google-translate)
+#+end_src
