@@ -77,6 +77,11 @@
                                                      ("[а-я]"))
                                                     ("ru" "en"
                                                      (not "[а-я]")
+                                                     ("[a-z]"))
+                                                    ("en" "uk"
+                                                     ("[а-я]"))
+                                                    ("uk" "en"
+                                                     (not "[а-я]")
                                                      ("[a-z]")))
   "Configuration for auto-switching languages during translation.
 
@@ -161,7 +166,7 @@ Optional argument COMMENT is a string to describe the change in the custom file.
        (cdr
         (assoc-string
          (google-translate-completing-read
-          "Default source lang"
+          "Default source language: "
           (google-translate-supported-languages)
           "English")
          google-translate-supported-languages-alist))))
@@ -174,9 +179,7 @@ Optional argument COMMENT is a string to describe the change in the custom file.
                        google-translate-default-target-language))
     (add-to-list 'google-translate-translation-directions-alist
                  (cons google-translate-default-target-language
-                       google-translate-default-source-language))
-    (km-google-translate-sync-directions-alist
-     km-google-translate-auto-switch-config)))
+                       google-translate-default-source-language))))
 
 
 (defun km-google-translate-auto-switch-p (rules str)
@@ -217,10 +220,12 @@ Argument TEXT is a string to be checked against translation rules."
       (when-let* ((rule-set
                    (seq-find
                     (lambda (it)
-                      (equal source-lang (car it)))
+                      (and
+                       (equal source-lang (car it))
+                       (assoc (cadr it)
+                              google-translate-translation-directions-alist)))
                     (km-google-translate--detect-lang-from-text word)))
-                  (target-lang (and (equal source-lang (car rule-set))
-                                    (cadr rule-set)))
+                  (target-lang (cadr rule-set))
                   (direction
                    (seq-position google-translate-translation-directions-alist
                                  (cons
