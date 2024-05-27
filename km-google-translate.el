@@ -1,4 +1,4 @@
-;;; km-google-translate.el --- Configure google-translate -*- lexical-binding: t -*-
+;;; km-google-translate.el --- Google Translate integration -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2024 Karim Aziiev <karim.aziiev@gmail.com>
 
