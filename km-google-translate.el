@@ -263,7 +263,7 @@ function's behavior."
 (defvar km-google-translate-result-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "q") #'quit-window)
-    (define-key map (kbd "C-x 0") #'kill-this-buffer)
+    (define-key map (kbd "C-x 0") #'quit-window)
     map)
   "Keymap for Google Translate result buffer commands.")
 
@@ -290,7 +290,7 @@ Argument CONTENT is the text content to be inserted into the results buffer."
                          (let ((map km-google-translate-result-mode-map))
                            (if buffer-read-only
                                (define-key map (kbd "q")
-                                           #'kill-this-buffer)
+                                           #'quit-window)
                              (define-key map (kbd "q")
                                          #'self-insert-command))
                            (add-hook
@@ -298,7 +298,7 @@ Argument CONTENT is the text content to be inserted into the results buffer."
                             (lambda ()
                               (if buffer-read-only
                                   (define-key map (kbd "q")
-                                              #'kill-this-buffer)
+                                              #'quit-window)
                                 (define-key map (kbd "q")
                                             #'self-insert-command)))
                             t)
