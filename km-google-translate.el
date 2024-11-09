@@ -193,7 +193,7 @@ Argument STR is the string to be checked against the rules."
   (not (catch 'found
          (dolist (ruleset rules)
            (unless
-               (when-let ((re (seq-find #'stringp ruleset)))
+               (when-let* ((re (seq-find #'stringp ruleset)))
                  (if (eq 'not (car ruleset))
                      (not (string-match-p re str))
                    (string-match-p re str)))
