@@ -6,7 +6,7 @@
 ;; URL: https://github.com/KarimAziev/km-google-translate
 ;; Version: 0.1.0
 ;; Keywords: tools local
-;; Package-Requires: ((emacs "25.1") (google-translate "0.12.0"))
+;; Package-Requires: ((emacs "26.1") (google-translate "0.12.0"))
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;; This file is NOT part of GNU Emacs.

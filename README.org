@@ -17,7 +17,7 @@ Configure and extends [[https://github.com/atykhonov/google-translate][google-tr
 
 | Name               | Version |
 |--------------------+---------|
-| Emacs              |    25.1 |
+| Emacs              |    26.1 |
 | ~google-translate~ |  0.12.0 |
 
 
